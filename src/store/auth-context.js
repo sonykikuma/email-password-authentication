@@ -12,9 +12,9 @@ const calculateRemainingTime = (expirationTime) => {
   const currentTime = new Date().getTime();
   const adjExpirationTime = new Date(expirationTime).getTime();
 
-  const remainingTime = adjExpirationTime - currentTime;
+  const remainingDuration = adjExpirationTime - currentTime;
 
-  return remainingTime;
+  return remainingDuration;
 };
 
 const retrieveStoredToken = () => {
@@ -23,7 +23,7 @@ const retrieveStoredToken = () => {
 
   const remainingTime = calculateRemainingTime(storedExpirationDate);
 
-  if (remainingTime <= 60000) {
+  if (remainingTime <= 3600) {
     localStorage.removeItem("token");
     localStorage.removeItem("expirationTime");
 
