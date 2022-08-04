@@ -48,7 +48,7 @@ const AuthForm = () => {
           return res.json();
         } else {
           return res.json().then((data) => {
-            //console.log(data);
+            console.log(data);
             let errorMessage = "Authentication failed";
             //if(data && data.error && data.error.mesage) {
             //  errorMessage= data.error.message;
@@ -61,7 +61,7 @@ const AuthForm = () => {
       })
       .then((data) => {
         const expirationTime = new Date(
-          new Date().getTime() + +data.expireIn * 1000
+          new Date().getTime() + +data.expiresIn * 1000
         );
         authCtx.login(data.idToken, expirationTime.toISOString());
         history.replace("/");
